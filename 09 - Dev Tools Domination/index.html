@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Console Tricks!</title>
+</head>
+<body>
+
+	<p>×BREAK×DOWN×</p>
+
+<script>
+	const p = document.querySelector('p');
+
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+	function makeGreen() {
+		p.style.color = '#BADA55';
+		p.style.fontSize = '50px';
+	}
+
+
+	// Regular
+	console.log("hello");
+
+
+	// Interpolated
+	console.log('Hello I am a %s string!', 'shitty programmer.');
+
+	console.log(`Hello ${'shittyy programmer'}!!`);
+
+	
+	//Table 
+	console.table(dogs);
+
+
+	// Styled
+	console.log("%c I am some great text", "font-size:50px; background:red;");	// You do a '%c' infornt of what you want to style. and then add the styles in the second parameter.
+
+
+    // warning!
+	console.warn("Oh nooo!");
+
+
+	// Error :|
+	console.error("You're Fucked.");
+
+
+	// Info
+	console.info('Fun fact: Crocodiles eat 3-4 ppl per year.');
+
+
+    // Testing
+	console.assert(p.classList.contains('ouch'), 'p ka classlist do not containes "ouch".');
+
+
+    // clearing
+		//console.clear();
+		// This will clear everything in console.
+
+
+		/**** 	MOST IMP 	*********/
+    // Viewing DOM Elements
+	console.log(p);
+	console.dir(p);	// return paragraph object.
+
+
+	// Grouping together
+	dogs.forEach(dog => {
+		console.groupCollapsed(`${dog.name}`);
+		console.log(`This is ${dog.name}`);
+		console.log(`${dog.name} is ${dog.age} years old`);
+		console.log(`${dog.name} is ${dog.age*7} dog years old`);
+		console.groupEnd(`${dog.name}`);
+	});
+
+
+    // counting
+	console.count("Neel");
+	console.count("Neel");
+	console.count("Neel");
+	console.count("Neel");
+	console.count("Neel");
+	console.count("Neel");
+	console.count("Neel");
+	console.count("Neel");
+	console.count("Neel");
+	console.count("Neel");
+
+
+    // timing
+	console.time('fetching data');
+
+	fetch('https://api.github.com/users/neel-thakker')
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			console.timeEnd('fetching data');
+		})
+
+	p.addEventListener('click', makeGreen);
+
+</script>
+</body>
+</html>
